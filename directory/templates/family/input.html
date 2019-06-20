@@ -9,6 +9,24 @@
         <div class="container directory-form">
                     <form class="input" action="{% url 'add' %}" method="POST">
                     {% csrf_token %}
+                        <h1 style="color: white; font-size: 60px">Your Directory Detail
+                        </h1>
+                        <h2 style="color:darkgoldenrod; font-size: 30px">Please select a branch</h2>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <label for="branch">Branch</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <select id="branch" name="branch">
+                                        <option value="ALL">ALL</option>
+                                        <option value="Chandler">Chandler</option>
+                                        <option value="Lapsley">Lapsley</option>
+                                        <option value="Lovelace">Lovelace</option>
+                                        <option value="Sullivan">Sullivan</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">First Name</label>

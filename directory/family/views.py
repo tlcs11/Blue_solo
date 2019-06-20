@@ -26,7 +26,8 @@ def add_family(request):
         new_family = Person(first_name=request.POST['first'],
                             last_name=request.POST['last'],
                             schools=request.POST['schools'],
-                            occupation=request.POST['occupation'])
+                            occupation=request.POST['occupation'],
+                            branch=request.POST['branch'])
         
         new_family.save()        
 

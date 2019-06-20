@@ -9,10 +9,15 @@ def family(request):
 
 def directory_view(request):
 
-    people = Person.objects.all()
+    people = Person.objects.all().order_by("branch")
+
+    chandler = Person.objects.filter(branch="chandler")
+    
 
     context = {
-        "people": people
+        "people": people,
+        "chandler": chandler
+        
     }
 
     return render(request,'family/directory_view.html', context=context)

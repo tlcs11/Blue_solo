@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <body background="{% static "img/close-up-daylight-environment-762679.jpg"%}" alt="Image Not Found">
+    </body>
+
+        <div class="container directory-form">  
+
+        <div class="container directory-form">
+                    <form class="input" action="{% url 'add' %}" method="POST">
+                    {% csrf_token %}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">First Name</label>
+                                    <input type="text" name="first" class="form-control" placeholder="First Name *">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Last Name</label>
+                                    <input type="text" name="last" class="form-control" placeholder="Last Name *">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">School(s) Attended</label>
+                                    <input type="text" name="schools" class="form-control" placeholder="School(s) Attended *">
+                                </div>
+                                <div class="form-group">
+                                        <label for="">Occupation</label>
+                                        <input type="text" name="occupation" class="form-control" placeholder="Occupation *">
+                                </div>
+                                {% comment %} <div class="form-group">
+                                        <input type="text" name="" class="form-control" placeholder="Twitter contact *">
+                                </div>
+                                <div class="form-group">
+                                        <input type="text" name="" class="form-control" placeholder="Instagram contact *">
+                                </div> {% endcomment %}
+                            </div>
+                
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholders="Your Message *"></textarea>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="submit" name="" class="btncontact" value="Send to the Directory">
+                                </div>
+                            </div>
+                        </div>  
+                    </form> 
+
+
+
+{% endblock  %}

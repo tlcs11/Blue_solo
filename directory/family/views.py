@@ -11,7 +11,7 @@ def directory_view(request):
 
     people = Person.objects.all().order_by("branch")
 
-    chandler = Person.objects.filter(branch="chandler")
+    chandler = Person.objects.filter(branch="Chandler")
     
 
     context = {
@@ -51,3 +51,27 @@ def delete_family(request):
         return redirect('directory')
 
     return render(request, 'family/input.html')
+
+def update_family(request, id):
+    to_update = Person.objects.get(id=id)
+    if request.method == "POST":
+
+        
+        for key, value in request.POST.items():
+            
+            if (value and key != "csrfmiddlewaretoken"):
+                setattr(to_update, key, value)
+
+            to_update.save()
+
+        
+        return redirect('directory')
+
+    context = {
+        "id": id,
+        "update_person":to_update
+    }
+    
+    return render(request, 'family/update.html', context=context)
+    
+        

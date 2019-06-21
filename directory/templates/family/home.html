@@ -88,12 +88,20 @@
                    
                                     
                                     <a href="{% url 'add' %}" class="btn btn-outline-white">Add me to the directory<i class="fa fa-book ml-2"></i></a>
-                                    
 
+                                   
+                                        {% comment %} <form action="{% url 'update' %}" method="POST">
+                                        {% csrf_token %} {% endcomment %}
+                                    
                                     <a href="{% url 'directory' %}" class="btn btn-outline-white">Take me to the directory<i class="fa fa-book ml-2"></i></a>
                                     
-                                    <a href="{% url 'delete' %}" class="btn btn-outline-white">Delete me out of the directory<i class="fa fa-book ml-2"></i></a>
-                                       
+                                    
+                                        {% comment %} <form action="{% url 'delete' %}" method="POST">
+                                        {% csrf_token %} {% endcomment %}
+
+
+                                        
+                                    </form>
                                     
 
                                 

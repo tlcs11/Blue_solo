@@ -1,0 +1,71 @@
+% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <body background="{% static "img/close-up-daylight-environment-762679.jpg"%}" alt="Image Not Found">
+    </body>
+
+        <div class="container directory-form">  
+
+        <div class="container directory-form">
+                    <form class="input" action="{% url 'update' id %}" method="POST">
+                    {% csrf_token %}
+                        <h1 style="color: white; font-size: 60px">Your Directory Detail
+                        </h1>
+                        <h2 style="color:darkgoldenrod; font-size: 30px">Please select a branch</h2>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <label for="branch">Branch</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <select id="branch" name="branch">
+                                        <option value="ALL">ALL</option>
+                                        <option value="Chandler">Chandler</option>
+                                        <option value="Lapsley">Lapsley</option>
+                                        <option value="Lovelace">Lovelace</option>
+                                        <option value="Sullivan">Sullivan</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">First Name</label>
+                                    <input type="text" name="first_name" class="form-control" placeholder="{{ update_person.first_name }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Last Name</label>
+                                    <input type="text" name="last_name" class="form-control" placeholder="Last Name *">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">School(s) Attended</label>
+                                    <input type="text" name="schools" class="form-control" placeholder="School(s) Attended *">
+                                </div>
+                                <div class="form-group">
+                                        <label for="">Occupation</label>
+                                        <input type="text" name="occupation" class="form-control" placeholder="Occupation *">
+                                </div>
+                                {% comment %} <div class="form-group">
+                                        <input type="text" name="" class="form-control" placeholder="Twitter contact *">
+                                </div>
+                                <div class="form-group">
+                                        <input type="text" name="" class="form-control" placeholder="Instagram contact *">
+                                </div> {% endcomment %}
+                            </div>
+                
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholders="Your Message *"></textarea>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="submit" name="" class="btncontact" value="Send to the Directory">
+                                </div>
+                            </div>
+                        </div>  
+                    </form> 
+
+
+
+{% endblock  %}

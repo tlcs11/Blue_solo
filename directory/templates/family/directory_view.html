@@ -90,17 +90,17 @@
                                 <td>{{ person.schools }}</td>
                                 <td>{{person.occupation}}</td>
                                 <td>
-                                    <form action="{% url 'add' %}" method="POST">
-                                        {% csrf_token %}
-                                        
-                                    </form>
+
+                                 <a href="{% url 'update' person.id  %}" class="btn btn-outline-white">Update<i class="fa fa-book ml-2"></i></a>
+                                 <a href="{% url 'delete' person.id %}" class="btn btn-outline-white">Delete<i class="fa fa-book ml-2"></i></a>
+                                    
                                 </td>
                             </tr>
                         
                         {% endfor %}
                     {% else %}
                     <tr>
-                        <td>No items in your list</td>
+                        <td>No people in your list</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -168,7 +168,33 @@
                     <div class="col-md-4 mb-5">
                         <i class="fa fa-camera-retro fa-4x orange-text"></i>
                         <h4 class="my-4 font-weight-bold">Chandler</h4>
+
+                             {% if chandler %}
+                        {% for person in chandler %}
                         
+                            <tr>
+                                <td>{{ person.branch }}</td>
+                                <td>{{ person.first_name }}</td>
+                                <td>{{ person.last_name }}</td>
+                                <td>{{ person.schools }}</td>
+                                <td>{{person.occupation}}</td>
+                                <td>
+                                    <form action="{% url 'add' %}" method="POST">
+                                        {% csrf_token %}
+                                        
+                                    </form>
+                                </td>
+                            </tr>
+                        
+                        {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td>No people in your list</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    {% endif %}
+
                         <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
                             maiores nam,
                             aperiam minima

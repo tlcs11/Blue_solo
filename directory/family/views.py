@@ -40,17 +40,27 @@ def add_family(request):
 
     return render(request, 'family/input.html')
 
-def delete_family(request):
+def delete_family(request, id):
+    to_delete = Person.objects.get(id=id)
+    to_delete.delete()
+    return redirect('directory')
 
-    if request.method =="POST":
+    context = {
+        "id": id
+    }
+    
+    return render(request, 'family/directory_view.html', context=context)
 
-        to_delete = Person.objects.get(id=request.POST['id'])
 
-        to_delete.delete()
+    # if request.method =="POST":
 
-        return redirect('directory')
+    #     to_delete = Person.objects.get(id=request.POST['id'])
 
-    return render(request, 'family/input.html')
+    #     to_delete.delete()
+
+    #     return redirect('directory')
+
+    # return render(request, 'family/input.html')
 
 def update_family(request, id):
     to_update = Person.objects.get(id=id)

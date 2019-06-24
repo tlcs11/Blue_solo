@@ -1,62 +1,9 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
+<body background="{% static "img/woodland-656969_1920.jpg"%}" alt="Image Not Found">
+    </body>
 
-
-<!--Main Navigation-->
-    {% comment %} <header> {% endcomment %}
-
-        {% comment %} <!--Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
-
-            <div class="container">
-
-                <!-- Navbar brand -->
-                <a class="navbar-brand" href="#">Navbar</a>
-
-                <!-- Collapse button -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-                    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button> {% endcomment %}
-
-                <!-- Collapsible content -->
-                {% comment %} <div class="collapse navbar-collapse" id="basicExampleNav">
-
-                    <!-- Links -->
-                    <ul class="navbar-nav mr-auto smooth-scroll">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#intro">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#best-features">Profession</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#examples">School</a>
-                        </li>
-                        <
-                    </ul>
-                    <!-- Links -->
-
-                    <!-- Social Icon  -->
-                    <ul class="navbar-nav nav-flex-icons">
-                        <li class="nav-item">
-                            <a class="nav-link"><i class="fab fa-facebook"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"><i class="fab fa-twitter"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"><i class="fab fa-instagram"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Collapsible content -->
-
-            </div>
-
-        </nav>
-        <!--/.Navbar--> {% endcomment %}
 
         <!--Mask-->
         <div class="view">
@@ -72,28 +19,27 @@
                             <div class="col-md-10">
 
                                 <!-- Heading -->
-                                <h2 style="color: clear; font-size: 60px">Travel</h2>
+                               
     <h1 style="color: gold; font-size: 60px">Your Family Directory
                         </h1>
                                 <!-- Divider -->
-                                <hr class="hr-light">
+                                <hr class="hr-dark">
+                                
 
                                 <!-- Description -->
-                                <h4 class="white-text my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Deleniti
-                                    consequuntur.</h4>
+                                <h4 style="color: orange; font-size 16px">Give the ones you love wings to fly, the roots to come back and resaons to stay. Dalai Lama</h4>
 
 
                                  <div class="container home-form">
                    
                                     
-                                    <a href="{% url 'add' %}" class="btn btn-outline-white">Add me to the directory<i class="fa fa-book ml-2"></i></a>
+                                    <a href="{% url 'add' %}" class="btn btn-dark">Add me to the directory</button><i class="fa fa-book ml-2"></i></a>
 
                                    
                                         {% comment %} <form action="{% url 'update' %}" method="POST">
                                         {% csrf_token %} {% endcomment %}
                                     
-                                    <a href="{% url 'directory' %}" class="btn btn-outline-white">Take me to the directory<i class="fa fa-book ml-2"></i></a>
+                                    <a href="{% url 'directory' %}"class="btn btn-dark">Take me to the Directory</button><i class="fa fa-book ml-2"></i></a>
                                     
                                     
                                         {% comment %} <form action="{% url 'delete' %}" method="POST">
@@ -129,7 +75,7 @@
             <section id="best-features" class="text-center">
 
                 <!-- Heading -->
-                <h2 class="mb-5 font-weight-bold">Best Features</h2>
+                <h2 style="color: orange; font-size 16px">Best Features</h2>
 
                 <!--Grid row-->
                 <div class="row d-flex justify-content-center mb-4">
@@ -157,7 +103,7 @@
                  <!--Grid column-->
                     <div class="col-md-4 mb-5">
                         <i class="fa fa-camera-retro fa-4x orange-text"></i>
-                        <h4 class="my-4 font-weight-bold">Chandler</h4>
+                        <h4 style="color: orange;  font-size 16 px">Chandler</h4>
                         <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
                             maiores nam,
                             aperiam minima
@@ -168,8 +114,9 @@
                     <!--Grid column-->
                     <div class="col-md-4 mb-5">
                         <i class="fa fa-camera-retro fa-4x orange-text"></i>
-                        <h4 class="my-4 font-weight-bold">Fowlkes</h4>
-                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
+                        <h4 style="color: orange;  font-size 16 px">Fowlkes</h4>
+                        
+                        <p class="black-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
                             maiores nam,
                             aperiam minima
                             assumenda deleniti hic.</p>
@@ -179,7 +126,7 @@
                 <!--Grid column-->
                     <div class="col-md-4 mb-5">
                         <i class="fa fa-camera-retro fa-4x orange-text"></i>
-                        <h4 class="my-4 font-weight-bold">Lapsely</h4>
+                        <h4 style="color: orange;  font-size 16 px">Lapsely</h4>
                         <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
                             maiores nam,
                             aperiam minima
@@ -190,7 +137,7 @@
                     <!--Grid column-->
                     <div class="col-md-4 mb-5">
                         <i class="fa fa-camera-retro fa-4x orange-text"></i>
-                        <h4 class="my-4 font-weight-bold">Lovelace</h4>
+                        <h4 style="color: orange;  font-size 16 px">Lovelace</h4>
                         <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
                             maiores nam,
                             aperiam minima
@@ -201,7 +148,7 @@
                     <!--Grid column-->
                     <div class="col-md-4 mb-1">
                         <i class="fa fa-heart fa-4x orange-text"></i>
-                        <h4 class="my-4 font-weight-bold">Sullivan</h4>
+                        <h4 style="color: orange;  font-size 16 px">Sullivan</h4>
                         <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
                             maiores nam,
                             aperiam minima
@@ -212,7 +159,7 @@
                     <!--Grid column-->
                     <div class="col-md-4 mb-1">
                         <i class="fa fa-bicycle fa-4x orange-text"></i>
-                        <h4 class="my-4 font-weight-bold">ALL</h4>
+                        <h4 style="color: orange;  font-size 16 px">ALL</h4>
                         <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
                             maiores nam,
                             aperiam minima

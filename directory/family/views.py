@@ -12,11 +12,23 @@ def directory_view(request):
     people = Person.objects.all().order_by("branch")
 
     chandler = Person.objects.filter(branch="Chandler")
+
+    lapsley = Person.objects.filter(branch="Lapsley"),
+
+    fowlkes = Person.objects.filter(branch="Fowlkes")
+
+    lovelace = Person.objects.filter(branch="Lovelace")
+
+    sullivan = Person.objects.filter(branch="Sullivan")
     
 
     context = {
         "people": people,
-        "chandler": chandler
+        "chandler": chandler,
+        "lapsley": lapsley,
+        "fowlkes": fowlkes,
+        "lovelace": lovelace,
+        "sullivan": sullivan
         
     }
 

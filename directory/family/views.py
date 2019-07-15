@@ -9,17 +9,17 @@ def family(request):
 
 def directory_view(request):
 
-    people = Person.objects.all().order_by("branch")
+    people = Person.objects.all().order_by("branch")[:5]
 
-    chandler = Person.objects.filter(branch="Chandler")
+    chandler = Person.objects.filter(branch="Chandler")[:2]
 
-    lapsley = Person.objects.filter(branch="Lapsley"),
+    lapsley = Person.objects.filter(branch="Lapsley")[:2]
 
-    fowlkes = Person.objects.filter(branch="Fowlkes")
+    fowlkes = Person.objects.filter(branch="Fowlkes")[:2]
 
-    lovelace = Person.objects.filter(branch="Lovelace")
+    lovelace = Person.objects.filter(branch="Lovelace")[:2]
 
-    sullivan = Person.objects.filter(branch="Sullivan")
+    sullivan = Person.objects.filter(branch="Sullivan")[:2]
     
 
     context = {

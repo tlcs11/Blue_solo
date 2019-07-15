@@ -3,134 +3,40 @@
 {% block content %}
     <div class="container">
         <br>
-       
-        <a href="{% url 'add' %}" </a>
+        <h1 style="color: gold; font-size: 60px">Your Family Directory</h1>
+        <a href="{% url 'add' %}"> </a>
         <br>
         <br>
+        {% comment %} <div class="list_table"> {% endcomment %}
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr class="table header">
+                        <th class="table_header" scope="col">Branch</th>
+                        <th class="table_header" scope="col">First Name</th> 
+                        <th class="table_header" scope="col">Last Name</th>
+                        <th class="table_header" scope="col">School(s) attended</th>
+                        <th class="table_header" scope="col">Area of Expertise</th>
+                        <th class="table_header" scope="col">Update</th>
+                        <th class="table_header" scope="col">Delete</th>
+                    <tr>
+            </thead>
+            <tbody>
 
-        <!--Main Navigation-->
-    <header>
-    <body background-color="white">
-
-</head>
-<body>
-
-
-        {% comment %} <!--Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
-
-            <div class="container">
-
-                <!-- Navbar brand -->
-                <a class="navbar-brand" href="#">Navbar</a>
-
-                <!-- Collapse button -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-                    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Collapsible content -->
-                <div class="collapse navbar-collapse" id="basicExampleNav">
-
-                    <!-- Links -->
-                    <ul class="navbar-nav mr-auto smooth-scroll">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#intro">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#best-features">Profession</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#examples">School</a>
-                        </li>
-                        <
-                    </ul>
-                    <!-- Links -->
-
-                    <!-- Social Icon  -->
-                    <ul class="navbar-nav nav-flex-icons">
-                        <li class="nav-item">
-                            <a class="nav-link"><i class="fab fa-facebook"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"><i class="fab fa-twitter"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"><i class="fab fa-instagram"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Collapsible content -->
-
-            </div>
-
-        </nav>
-        <!--/.Navbar--> {% endcomment %}
-
-        <!--Mask-->
-        <div id="intro" class="view">
-
-            <div class="mask rgba-black-strong">
-
-                <div class="container-fluid d-flex align-items-center justify-content-center h-100">
-
-                    <div class="row d-flex justify-content-center text-center">
-
-                        <div class="col-md-10">
-
-                            <!-- Heading -->
-<h1 style="color: gold; font-size: 60px">Your Family Directory
-                    </h1>
-
-                    
-
-                    
-                                
-                           
-                            {% if people %}
+             {% if people %}
                         {% for person in people %}
-                        <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+                    <tr>
+                            <td>{{ person.branch }}</td>
+                                    <td>{{ person.first_name }}</td>
+                                    <td>{{ person.last_name }}</td>
+                                    <td>{{ person.schools }}</td>
+                                    <td>{{person.occupation}}</td>
+                                    <td>
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-
-                    <table style="width:100%">
-                            <tr>
-                                <th>Branch</th>
-                                <th>First Name</th> 
-                                <th>Last Name</th>
-                                <th> School(s) attended</th>
-                                <th> Area of Expertise</th>
-                            <tr>
-                                <td>{{ person.branch }}</td>
-                                <td>{{ person.first_name }}</td>
-                                <td>{{ person.last_name }}</td>
-                                <td>{{ person.schools }}</td>
-                                <td>{{person.occupation}}</td>
-                                <td>
-
-                                 <a href="{% url 'update' person.id  %}" class="btn btn-outline-white">Update<i class="fa fa-book ml-2"></i></a>
-                                 <a href="{% url 'delete' person.id %}" class="btn btn-outline-white">Delete<i class="fa fa-book ml-2"></i></a>
-                                    
-                                </td>
-                        
-                            </tr>
-                   
-                         </tr>
+                                <a href="{% url 'update' person.id  %}" class="btn btn-outline-white">Update<i class="fa fa-book ml-2"></i></a>
+                                <a href="{% url 'delete' person.id %}" class="btn btn-outline-white">Delete<i class="fa fa-book ml-2"></i></a>
+                                        
+                            </td>
+                        </tr>
                      
                     
                         {% endfor %}
@@ -144,39 +50,18 @@ tr:nth-child(even) {
                     {% endif %}
                 </table>
 
+</div>
+        <!--Main Navigation-->
+    <header>
+    <body background-color="white">
 
-                            <!-- Divider -->
-                            <hr class="hr-light">
+</head>
+<body>
 
-                            {% comment %} <!-- Description -->
-                            <h4 class="white-text my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Deleniti
-                                consequuntur.</h4>
-                            <button type="button" class="btn btn-outline-white">Read more<i class="fa fa-book ml-2"></i></button> {% endcomment %}
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-        <!--/.Mask-->
-
-    </header>
-    <!--Main Navigation-->
 
     <!--Main layout-->
     <main class="mt-5">
         <div class="container">
-
-            {% comment %} <!--Section: Best Features-->
-            <section id="best-features" class="text-center">
-
-                <!-- Heading -->
-                <h2 class="mb-5 font-weight-bold">Best Features</h2> {% endcomment %}
 
                 <!--Grid row-->
                 <div class="row d-flex justify-content-center mb-4">
@@ -227,10 +112,6 @@ tr:nth-child(even) {
                         <td></td>
                     {% endif %}
 
-                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
-                            maiores nam,
-                            aperiam minima
-                            assumenda deleniti hic.</p>
                     </div>
                     <!--Grid column-->
 
@@ -265,10 +146,6 @@ tr:nth-child(even) {
                         <td></td>
                     {% endif %}
 
-                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
-                            maiores nam,
-                            aperiam minima
-                            assumenda deleniti hic.</p>
                     </div>
                     <!--Grid column-->
 
@@ -304,12 +181,7 @@ tr:nth-child(even) {
                         <td></td>
                     {% endif %}
 
-                        
-
-                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
-                            maiores nam,
-                            aperiam minima
-                            assumenda deleniti hic.</p>
+                    
                     </div>
                     <!--Grid column-->
 
@@ -343,10 +215,7 @@ tr:nth-child(even) {
                         <td></td>
                         <td></td>
                     {% endif %}
-                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
-                            maiores nam,
-                            aperiam minima
-                            assumenda deleniti hic.</p>
+                      
                     </div>
                     <!--Grid column-->
 
@@ -380,10 +249,7 @@ tr:nth-child(even) {
                         <td></td>
                         <td></td>
                     {% endif %}
-                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
-                            maiores nam,
-                            aperiam minima
-                            assumenda deleniti hic.</p>
+                        
                     </div>
                     <!--Grid column-->
 

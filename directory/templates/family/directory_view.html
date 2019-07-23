@@ -1,280 +1,261 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
+       
+<div class="view">
     <div class="container">
-        <br>
-        <h1 style="color: gold; font-size: 60px">Your Family Directory</h1>
-        <a href="{% url 'add' %}"> </a>
-        <br>
-        <br>
-        {% comment %} <div class="list_table"> {% endcomment %}
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr class="table header">
-                        <th class="table_header" scope="col">Branch</th>
-                        <th class="table_header" scope="col">First Name</th> 
-                        <th class="table_header" scope="col">Last Name</th>
-                        <th class="table_header" scope="col">School(s) attended</th>
-                        <th class="table_header" scope="col">Area of Expertise</th>
-                        <th class="table_header" scope="col">Update</th>
-                        <th class="table_header" scope="col">Delete</th>
-                    <tr>
-            </thead>
-            <tbody>
+        <!--Mask-->
+            <div class="text-center">
 
-             {% if people %}
+                <!-- Heading -->
+                <h1 style="color: red; font-size 60px">Your Family Directory</h1>
+                <br>
+                <a href="{% url 'family-home' %}" class="other_button">Home</a>
+                <a href="{% url 'add' %}" class="other_button">Add </a>
+            </div>
+            <br>
+            <br>
+                {% comment %} <div class="list_table"> {% endcomment %}
+                <table class="table myTable">
+                    <thead class="thead-light"> 
+                        <tr class="table header">
+                            <th class="table_header" scope="col">Branch</th>
+                            <th class="table_header" scope="col">First Name</th> 
+                            <th class="table_header" scope="col">Last Name</th>
+                            <th class="table_header" scope="col">School(s) attended</th>
+                            <th class="table_header" scope="col">Area of Expertise</th>
+                            <th class="table_header" scope="col">Update</th>
+                            <th class="table_header" scope="col">Delete</th>
+                        <tr>
+                    </thead>
+                    <tbody>
+                    {% if people %}
                         {% for person in people %}
-                    <tr>
-                            <td>{{ person.branch }}</td>
+                            <tr>
+                                <td>{{ person.branch }}</td>
+                                <td>{{ person.first_name }}</td>
+                                <td>{{ person.last_name }}</td>
+                                <td>{{ person.schools }}</td>
+                                <td>{{person.occupation}}</td>
+                                <td><a href="{% url 'update' person.id  %}" class="btn btn-danger">Update</a></td>
+                                <td><a href="{% url 'delete' person.id %}" class="btn btn-dark">Delete</a></td>
+                            </tr>
+                            
+                            
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td>No people in your list</td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+            <!--Main Navigation-->
+
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center mb-4">
+
+                        <!--Grid column-->
+                        <div class="col-md-8">
+
+                            <!-- Description -->
+                            <h1 style="color: red; font-size: 30px"><p class="grey-text"><center>If you want to change the world, start with yourself.    Mahatma Gandhi</center></p></h1></n>
+
+                        </div>
+                        <!--Grid column-->
+
+                    </div>
+                    <!--Grid row-->
+
+                    <!--Grid row-->
+                    <div class="row familyList">
+
+                    <!--Grid column-->
+                        <div class="col-md-4 mb-5">
+                            <h4 class="my-4 font-weight-bold">Chandler</h4>
+                                {% if chandler %}
+
+                                    {% for person in chandler %}
+                                        <tr>
+                                            
+                                            <td>{{ person.first_name }}</td>
+                                            <td>{{ person.last_name }}</td>
+                                            <td>{{ person.schools }}</td>
+                                            <td>{{person.occupation}}</td>
+                                            <td>
+                                                <form action="{% url 'add' %}" method="POST">
+                                                    {% csrf_token %}
+                                                </form>
+                                            </td>
+                                        </tr>
+
+                                    
+                                    {% endfor %}
+                                {% else %}
+                                <tr>
+                                    <td>No people in your list</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                {% endif %}
+
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-4 mb-5">
+                            <h4 class="my-4 font-weight-bold">Fowlkes</h4>
+
+                            {% if fowlkes %}
+                            {% for person in fowlkes %}
+                            
+                                <tr>
+                                    
                                     <td>{{ person.first_name }}</td>
                                     <td>{{ person.last_name }}</td>
                                     <td>{{ person.schools }}</td>
                                     <td>{{person.occupation}}</td>
                                     <td>
+                                        <form action="{% url 'add' %}" method="POST">
+                                            {% csrf_token %}
+                                            
+                                        </form>
+                                    </td>
+                                </tr>
+                            
+                            {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td>No people in your list</td>``
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        {% endif %}
 
-                                <a href="{% url 'update' person.id  %}" class="btn btn-outline-white">Update<i class="fa fa-book ml-2"></i></a>
-                                <a href="{% url 'delete' person.id %}" class="btn btn-outline-white">Delete<i class="fa fa-book ml-2"></i></a>
-                                        
-                            </td>
+                        </div>
+                        <!--Grid column-->
+
+                    <!--Grid column-->
+                        <div class="col-md-4 mb-5">
+                            <h4 class="my-4 font-weight-bold">Lapsley</h4>
+
+                            
+                            {% if lapsley %}
+                            {% for person in lapsley %}
+                            
+                                <tr>
+                                    
+                                    <td>{{ person.first_name }}</td>
+                                    <td>{{ person.last_name }}</td>
+                                    <td>{{ person.schools }}</td>
+                                    <td>{{person.occupation}}</td>
+                                    <td>
+                                        <form action="{% url 'add' %}" method="POST">
+                                            {% csrf_token %}
+                                            
+                                        </form>
+                                    </td>
+                                </tr>
+                            
+                            {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td>No people in your list</td>``
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        {% endif %}
+
+                        
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-4 mb-5">
+                            <h4 class="my-4 font-weight-bold">Lovelace</h4>
+
+                            {% if lovelace %}
+                            {% for person in lovelace %}
+                            
+                                <tr>
+                                    
+                                    <td>{{ person.first_name }}</td>
+                                    <td>{{ person.last_name }}</td>
+                                    <td>{{ person.schools }}</td>
+                                    <td>{{person.occupation}}</td>
+                                    <td>
+                                        <form action="{% url 'add' %}" method="POST">
+                                            {% csrf_token %}
+                                            
+                                        </form>
+                                    </td>
+                                </tr>
+                            
+                            {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td>No people in your list</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
-                     
-                    
-                        {% endfor %}
-                    {% else %}
-                
-                    <tr>
-                        <td>No people in your list</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    {% endif %}
-                </table>
+                        {% endif %}
+                        
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-4 mb-1">
+                            <h4 class="my-4 font-weight-bold">Sullivan</h4>
+
+                            {% if sullivan %}
+                            {% for person in sullivan %}
+                            
+                                <tr>
+                                    
+                                    <td>{{ person.first_name }}</td>
+                                    <td>{{ person.last_name }}</td>
+                                    <td>{{ person.schools }}</td>
+                                    <td>{{person.occupation}}</td>
+                                    <td>
+                                        <form action="{% url 'add' %}" method="POST">
+                                            {% csrf_token %}
+                                            
+                                        </form>
+                                    </td>
+                                </tr>
+                            
+                            {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td>No people in your list</td>``
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        {% endif %}
+                            
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-4 mb-1">
+                            <i class="fa fa-bicycle fa-4x orange-text"></i>
+                            <h4 class="my-4 font-weight-bold">ALL</h4>
+                            <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
+                                maiores nam,
+                                aperiam minima
+                                assumenda deleniti hic.</p>
+                        </div>
+                        
+                </div>
+               
+            </div>
+       
+        </div>
+
+    </div>
 
 </div>
-        <!--Main Navigation-->
-    <header>
-    <body background-color="white">
-
-</head>
-<body>
-
-
-    <!--Main layout-->
-    <main class="mt-5">
-        <div class="container">
-
-                <!--Grid row-->
-                <div class="row d-flex justify-content-center mb-4">
-
-                    <!--Grid column-->
-                    <div class="col-md-8">
-
-                        <!-- Description -->
-                        <h1 style="color: gold; font-size: 30px"><p class="grey-text">If you want to change the world, start with yourself.    Mahatma Gandhi</p></h1></n>
-
-                    </div>
-                    <!--Grid column-->
-
-                </div>
-                <!--Grid row-->
-
-                <!--Grid row-->
-                <div class="row">
-
-                 <!--Grid column-->
-                    <div class="col-md-4 mb-5">
-                        <i class="fa fa-camera-retro fa-4x orange-text"></i>
-                        <h4 class="my-4 font-weight-bold">Chandler</h4>
-
-                             {% if chandler %}
-                        {% for person in chandler %}
-                        
-                            <tr>
-                                
-                                <td>{{ person.first_name }}</td>
-                                <td>{{ person.last_name }}</td>
-                                <td>{{ person.schools }}</td>
-                                <td>{{person.occupation}}</td>
-                                <td>
-                                    <form action="{% url 'add' %}" method="POST">
-                                        {% csrf_token %}
-                                        
-                                    </form>
-                                </td>
-                            </tr>
-                        
-                        {% endfor %}
-                    {% else %}
-                    <tr>
-                        <td>No people in your list</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    {% endif %}
-
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-md-4 mb-5">
-                        <i class="fa fa-camera-retro fa-4x orange-text"></i>
-                        <h4 class="my-4 font-weight-bold">Fowlkes</h4>
-
-                         {% if fowlkes %}
-                        {% for person in fowlkes %}
-                        
-                            <tr>
-                                
-                                <td>{{ person.first_name }}</td>
-                                <td>{{ person.last_name }}</td>
-                                <td>{{ person.schools }}</td>
-                                <td>{{person.occupation}}</td>
-                                <td>
-                                    <form action="{% url 'add' %}" method="POST">
-                                        {% csrf_token %}
-                                        
-                                    </form>
-                                </td>
-                            </tr>
-                        
-                        {% endfor %}
-                    {% else %}
-                    <tr>
-                        <td>No people in your list</td>``
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    {% endif %}
-
-                    </div>
-                    <!--Grid column-->
-
-                <!--Grid column-->
-                    <div class="col-md-4 mb-5">
-                        <i class="fa fa-camera-retro fa-4x orange-text"></i>
-                        <h4 class="my-4 font-weight-bold">Lapsley</h4>
-
-                        
-                         {% if lapsley %}
-                        {% for person in lapsley %}
-                        
-                            <tr>
-                                
-                                <td>{{ person.first_name }}</td>
-                                <td>{{ person.last_name }}</td>
-                                <td>{{ person.schools }}</td>
-                                <td>{{person.occupation}}</td>
-                                <td>
-                                    <form action="{% url 'add' %}" method="POST">
-                                        {% csrf_token %}
-                                        
-                                    </form>
-                                </td>
-                            </tr>
-                        
-                        {% endfor %}
-                    {% else %}
-                    <tr>
-                        <td>No people in your list</td>``
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    {% endif %}
-
-                    
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-md-4 mb-5">
-                        <i class="fa fa-camera-retro fa-4x orange-text"></i>
-                        <h4 class="my-4 font-weight-bold">Lovelace</h4>
-
-                         {% if lovelace %}
-                        {% for person in lovelace %}
-                        
-                            <tr>
-                                
-                                <td>{{ person.first_name }}</td>
-                                <td>{{ person.last_name }}</td>
-                                <td>{{ person.schools }}</td>
-                                <td>{{person.occupation}}</td>
-                                <td>
-                                    <form action="{% url 'add' %}" method="POST">
-                                        {% csrf_token %}
-                                        
-                                    </form>
-                                </td>
-                            </tr>
-                        
-                        {% endfor %}
-                    {% else %}
-                    <tr>
-                        <td>No people in your list</td>``
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    {% endif %}
-                      
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-md-4 mb-1">
-                        <i class="fa fa-heart fa-4x orange-text"></i>
-                        <h4 class="my-4 font-weight-bold">Sullivan</h4>
-
-                         {% if sullivan %}
-                        {% for person in sullivan %}
-                        
-                            <tr>
-                                
-                                <td>{{ person.first_name }}</td>
-                                <td>{{ person.last_name }}</td>
-                                <td>{{ person.schools }}</td>
-                                <td>{{person.occupation}}</td>
-                                <td>
-                                    <form action="{% url 'add' %}" method="POST">
-                                        {% csrf_token %}
-                                        
-                                    </form>
-                                </td>
-                            </tr>
-                        
-                        {% endfor %}
-                    {% else %}
-                    <tr>
-                        <td>No people in your list</td>``
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    {% endif %}
-                        
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-md-4 mb-1">
-                        <i class="fa fa-bicycle fa-4x orange-text"></i>
-                        <h4 class="my-4 font-weight-bold">ALL</h4>
-                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
-                            maiores nam,
-                            aperiam minima
-                            assumenda deleniti hic.</p>
-                    </div>
-                    <!--Grid column-->
-
-                </div>
-                <!--Grid row-->
-
-            </section>
-            <!--Section: Best Features-->
-
-            <hr class="my-5">
-    </body>
-
-        
-    </div>
-    <br><br><br><br><br>
+ 
 {% endblock %}
 
